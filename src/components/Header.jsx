@@ -4,21 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
-import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 export default function Header() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(searchParams);
-    const searchTermFromUrl = urlParams.get("searchTerm");
-    if (searchTermFromUrl) {
-      setSearchTerm(searchTermFromUrl);
-    }
-  }, [searchParams]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const urlParams = new URLSearchParams(searchParams);
@@ -44,8 +30,6 @@ export default function Header() {
             type='text'
             placeholder='Search...'
             className='bg-transparent focus:outline-none w-24 sm:w-64 text-gray-600'
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button>
             <FaSearch className='text-slate-600' />
