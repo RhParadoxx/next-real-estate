@@ -8,6 +8,8 @@ export const connect = async () => {
   if (initialized) {
     console.log("MongoDB already connected");
     return;
+    console.log("headers");
+    
   }
 
   try {
